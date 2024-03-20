@@ -1,5 +1,7 @@
 
 const baseUrl = 'http://localhost/games/GamesAPI/G/'
+
+
 export default async function callAPI(url :string, data = {}) {
     
     var json = { result: 0, message: 'خطأ في الإتصال' ,records:[]} 

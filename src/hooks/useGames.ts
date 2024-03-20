@@ -1,33 +1,36 @@
 import { useEffect, useState } from "react";
 import callAPI from "../services/callAPi";
 
-interface Game{
-    id:number
-    game_name:string
+export interface Game {
+    id: number
+    game_name: string
+    game_image:string
 }
-interface FetchGamesResponse{
-    result:number
-    message:string
-    records:Game[]
+interface FetchGamesResponse {
+    result: number
+    message: string
+    records: Game[]
 }
-   const useGames = () => {
-       
-   const [games,setGames] = useState<Game[]>([])
-   useEffect(()=>{
-       const fetchData = async () => {
-           
-               const response: FetchGamesResponse= await callAPI('getGames.php');
+const useGames = () => {
 
-               setGames(response.records);
-           
+    const [games, setGames] = useState<Game[]>([])
+    useEffect(() => {
+  
+        const fetchData = async () => {
 
-         };
-     
-         fetchData();
+            const response: FetchGamesResponse = await callAPI('getGames.php');
 
-   },[])
-   return{games}
+            setGames(response.records);
 
 
-   }
-   export default useGames
+        };
+
+        fetchData();
+
+
+    }, [])
+    return { games }
+
+
+}
+export default useGames
