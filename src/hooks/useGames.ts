@@ -16,22 +16,26 @@ interface FetchGamesResponse {
 const useGames = () => {
 
     const [games, setGames] = useState<Game[]>([])
+    const [isLoading , setLoading] = useState(false)
     useEffect(() => {
-  
+        
         const fetchData = async () => {
-
+            
+            setLoading(true)
             const response: FetchGamesResponse = await callAPI('getGames.php');
-
+            
             setGames(response.records);
-
-
+            
+            setLoading(false)
+            
         };
-
+        
         fetchData();
 
 
+
     }, [])
-    return { games }
+    return { games ,isLoading}
 
 
 }
