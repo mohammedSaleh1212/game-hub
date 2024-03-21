@@ -5,6 +5,8 @@ export interface Game {
     id: number
     game_name: string
     game_image:string
+    score:number
+
 }
 interface FetchGamesResponse {
     result: number
