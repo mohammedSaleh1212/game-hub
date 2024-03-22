@@ -4,6 +4,7 @@ import callAPI from "../services/callAPi";
 export interface Genre {
     id: number
     genre_name: string
+    genre_image:string
 
 
 }
