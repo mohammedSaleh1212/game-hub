@@ -1,14 +1,20 @@
 import React, { useEffect, useState } from 'react'
 
-import useGenres from '../hooks/useGenres'
-import { HStack, Image, List, ListItem,Spinner,Text } from '@chakra-ui/react'
+import useGenres, { Genre } from '../hooks/useGenres'
+import { Button, HStack, Image, List, ListItem,Spinner,Text } from '@chakra-ui/react'
 import GenresSkeleton from './GenresSkeleton'
 
 
+interface Props {
+    onSelectGenre:(genre:Genre) => void
+}
 
-const Genres = () => {
+
+
+const Genres = ({onSelectGenre} : Props) => {
     const { genres, isLoading } = useGenres()
     const skeleton = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
 
 
     return (
@@ -20,11 +26,11 @@ const Genres = () => {
                 {genres && genres.map(genre =>
                     <ListItem key={genre.id} paddingY='5px'>
                         <HStack>
-                          <Image src={genre.genre_image} boxSize='32px' borderRadius={8}/>
-                          <Text fontSize='lg'>
+                          <Image src={genre.genre_image} boxSize='32px' borderRadius={8}   />
+                          <Button variant={'link'} fontSize='lg' marginBottom={0} onClick={() => onSelectGenre(genre)}>
 
                         {genre.genre_name}
-                          </Text>
+                          </Button >
 
                         </HStack>
                     </ListItem>)}
