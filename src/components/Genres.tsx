@@ -7,11 +7,12 @@ import GenresSkeleton from './GenresSkeleton'
 
 interface Props {
     onSelectGenre:(genre:Genre) => void
+    selectedGenre:Genre | null
 }
 
 
 
-const Genres = ({onSelectGenre} : Props) => {
+const Genres = ({onSelectGenre,selectedGenre} : Props) => {
     const { genres, isLoading } = useGenres()
     const skeleton = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
@@ -27,7 +28,7 @@ const Genres = ({onSelectGenre} : Props) => {
                     <ListItem key={genre.id} paddingY='5px'>
                         <HStack>
                           <Image src={genre.genre_image} boxSize='32px' borderRadius={8}   />
-                          <Button variant={'link'} fontSize='lg' marginBottom={0} onClick={() => onSelectGenre(genre)}>
+                          <Button fontWeight={genre.id == selectedGenre?.id ?'bold':'normal'} variant={'link'} fontSize='lg' marginBottom={0} onClick={() => onSelectGenre(genre)}>
 
                         {genre.genre_name}
                           </Button >
