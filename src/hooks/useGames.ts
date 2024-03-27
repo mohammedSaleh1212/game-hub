@@ -2,11 +2,19 @@ import { useEffect, useState } from "react";
 import callAPI from "../services/callAPi";
 import { Genre } from "./useGenres";
 
+
+
+
+
+
+
+
 export interface Game {
     id: number
     game_name: string
     game_image:string
     score:number
+
 
 }
 interface FetchGamesResponse {
@@ -14,7 +22,8 @@ interface FetchGamesResponse {
     message: string
     records: Game[]
 }
-const useGames = (genre:Genre | null) => {
+
+const useGames = (genre:Genre | null,sorter:string | null) => {
 
     const [games, setGames] = useState<Game[]>([])
     const [isLoading , setLoading] = useState(false)
@@ -24,7 +33,8 @@ const useGames = (genre:Genre | null) => {
             
             setLoading(true)
             const response: FetchGamesResponse = await callAPI('getGames.php',{
-                'genre':genre ? genre.id:null
+                'genre':genre ? genre.id:null,
+                'sorter':sorter ? sorter:null
             });
             
             setGames(response.records);
@@ -37,7 +47,7 @@ const useGames = (genre:Genre | null) => {
 
 
 
-    }, [genre])
+    }, [genre,sorter])
     return { games ,isLoading}
 
 

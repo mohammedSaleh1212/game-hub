@@ -6,12 +6,14 @@ import GamesGrid from './components/GamesGrid'
 import Genres from './components/Genres'
 import { useState } from 'react'
 import { Genre } from './hooks/useGenres'
-import { Game } from './hooks/useGames'
+import SortSelectorList from './components/SortSelectorList'
+
 
 
 function App() {
   const [selectedGenre , setSelectedGenre] = useState<Genre | null>(null)
-  // const [selectedGame , setSelectedGame] = useState<Game>()
+  const [selectedSortSelector , setselectedSortSelector] = useState<string | null>(null)
+
 
   return (
 
@@ -41,7 +43,8 @@ function App() {
 
       </Show>
       <GridItem area={'main'}>
-        <GamesGrid selectedGenre={selectedGenre}/>
+        <SortSelectorList onSelectSortOrder={(sortOrder) => setselectedSortSelector(sortOrder)}/>
+        <GamesGrid selectedGenre={selectedGenre}  selectedSortSelector={selectedSortSelector}/>
       </GridItem>
 
 

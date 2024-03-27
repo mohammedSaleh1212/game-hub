@@ -1,18 +1,21 @@
 
 import { SimpleGrid } from '@chakra-ui/react'
-import useGames from '../hooks/useGames'
+// import useGames, { SortSelector } from '../hooks/useGames'
 import GameCard from './GameCard'
 import GameCardSkeleton from './GameCardSkeleton'
 import GameCardContainer from './GameCardContainer'
 import { Genre } from '../hooks/useGenres'
 
+import useGames from '../hooks/useGames'
+
 interface Props{
   selectedGenre:Genre | null
+  selectedSortSelector:string | null
 }
 
-const GamesGrid = ({selectedGenre}:Props) => {
+const GamesGrid = ({selectedGenre,selectedSortSelector}:Props) => {
 
-  const { games, isLoading } = useGames(selectedGenre)
+  const { games, isLoading } = useGames(selectedGenre , selectedSortSelector)
   const skeletons = [1, 2, 3, 4, 5, 6]
   return (
     <>

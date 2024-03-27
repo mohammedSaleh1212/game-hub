@@ -2,6 +2,7 @@ import { Card, CardHeader, CardBody, CardFooter, Image, Heading, HStack } from '
 import { Game } from '../hooks/useGames'
 import PlatformIcons from './PlatformIcons'
 import CreticScore from './CreticScore'
+import noImage from '../assets/no-image-placeholder-6f3882e0.webp'
 
 
 interface Props {
@@ -10,7 +11,7 @@ interface Props {
 const GameCard = ({ game }: Props) => {
   return (
     <Card>
-      <Image src={game.game_image} style={{height:'240px',aspectRatio:600/400}} />
+      <Image src={game.game_image ? game.game_image : noImage} style={{height:'240px',aspectRatio:600/400}} />
       <CardBody>
         <Heading fontSize='2xl'>{game.game_name}</Heading>
         <HStack justifyContent='space-between'>
