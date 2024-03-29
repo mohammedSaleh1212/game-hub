@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import callAPI from "../services/callAPi";
+import saticGenres from '../Data/Genres'
 
 export interface Genre {
     id: number
@@ -8,23 +9,19 @@ export interface Genre {
 
 
 }
-interface FetchGenresResponse {
-    result: number
-    message: string
-    records: Genre[]
-}
-const useGenres = () => {
+
+const useStaticGenres = () => {
 
     const [genres, setGenres] = useState<Genre[]>([])
     const [isLoading , setLoading] = useState(false)
     useEffect(() => {
         
-        const fetchData = async () => {
+        const fetchData =  () => {
             
             setLoading(true)
-            const response: FetchGenresResponse = await callAPI('getGenres.php');
+            const response = {genres:saticGenres ,isLoading:false, error:null};
             
-            setGenres(response.records);
+            setGenres(response.genres);
             
             setLoading(false)
             
@@ -39,4 +36,4 @@ const useGenres = () => {
 
 
 }
-export default useGenres
+export default useStaticGenres

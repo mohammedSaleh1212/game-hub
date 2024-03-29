@@ -7,12 +7,17 @@ import Genres from './components/Genres'
 import { useState } from 'react'
 import { Genre } from './hooks/useGenres'
 import SortSelectorList from './components/SortSelectorList'
+import Heading from './components/Heading'
 
+interface GameQuery {
 
+}
 
 function App() {
-  const [selectedGenre , setSelectedGenre] = useState<Genre | null>(null)
-  const [selectedSortSelector , setselectedSortSelector] = useState<string | null>(null)
+  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null)
+  const [selectedSortSelector, setselectedSortSelector] = useState<string | null>(null)
+  const [searchText, setSearchText] = useState<string | null>(null)
+  // const [heading, setHeading] = useState<string>('Games')
 
 
   return (
@@ -26,25 +31,30 @@ function App() {
 
         }
       }
-        templateColumns ={{
-          base:'1fr',
-          lg :'200px 1fr'
+      templateColumns={{
+        base: '1fr',
+        lg: '200px 1fr'
 
-          
-        }}
-      >
+
+      }}
+    >
       <GridItem area={'nav'}>
-        <NavBar />
+        <NavBar onSearch={(searchValue) => setSearchText(searchValue)} />
       </GridItem>
       <Show above="lg" >
         <GridItem area={'aside'} paddingX='5px'>
-          <Genres  onSelectGenre={(genre) => setSelectedGenre(genre)}  selectedGenre={selectedGenre} />
+        <Heading text = 'Genres' />
+
+          <Genres onSelectGenre={(genre) => {setSelectedGenre(genre)}} selectedGenre={selectedGenre} />
         </GridItem>
 
       </Show>
       <GridItem area={'main'}>
-        <SortSelectorList onSelectSortOrder={(sortOrder) => setselectedSortSelector(sortOrder)}/>
-        <GamesGrid selectedGenre={selectedGenre}  selectedSortSelector={selectedSortSelector}/>
+        <Heading text = {selectedGenre?selectedGenre.genre_name:'Relevance'} />
+
+  
+        <SortSelectorList onSelectSortOrder={(sortOrder) => setselectedSortSelector(sortOrder)} />
+        <GamesGrid selectedGenre={selectedGenre} selectedSortSelector={selectedSortSelector} />
       </GridItem>
 
 

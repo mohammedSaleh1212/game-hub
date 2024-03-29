@@ -13,11 +13,11 @@ const GameCard = ({ game }: Props) => {
     <Card>
       <Image src={game.game_image ? game.game_image : noImage} style={{height:'240px',aspectRatio:600/400}} />
       <CardBody>
-        <Heading fontSize='2xl'>{game.game_name}</Heading>
-        <HStack justifyContent='space-between'>
+        <HStack justifyContent='space-between' marginBottom={3}>
           <PlatformIcons />
           <CreticScore score={game.score} />
         </HStack>
+        <Heading fontSize='2xl'>{game.game_name}</Heading>
 
 
 
