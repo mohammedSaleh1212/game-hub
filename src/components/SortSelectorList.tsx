@@ -1,5 +1,5 @@
 import { Button, Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react'
-import React, { useState } from 'react'
+import { useState } from 'react'
 interface Props {
   onSelectSortOrder : (sortOrder:string) => void
 }

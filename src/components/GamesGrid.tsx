@@ -1,6 +1,6 @@
 
 import { SimpleGrid } from '@chakra-ui/react'
-// import useGames, { SortSelector } from '../hooks/useGames'
+
 import GameCard from './GameCard'
 import GameCardSkeleton from './GameCardSkeleton'
 import GameCardContainer from './GameCardContainer'

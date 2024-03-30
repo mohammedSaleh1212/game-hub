@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import callAPI from "../services/callAPi";
+
 import saticGenres from '../Data/Genres'
 
 export interface Genre {

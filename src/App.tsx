@@ -9,15 +9,12 @@ import { Genre } from './hooks/useGenres'
 import SortSelectorList from './components/SortSelectorList'
 import Heading from './components/Heading'
 
-interface GameQuery {
-
-}
 
 function App() {
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null)
   const [selectedSortSelector, setselectedSortSelector] = useState<string | null>(null)
-  const [searchText, setSearchText] = useState<string | null>(null)
-  // const [heading, setHeading] = useState<string>('Games')
+
+
 
 
   return (
@@ -39,7 +36,7 @@ function App() {
       }}
     >
       <GridItem area={'nav'}>
-        <NavBar onSearch={(searchValue) => setSearchText(searchValue)} />
+        <NavBar onSearch={(searchValue) => console.log(searchValue)} />
       </GridItem>
       <Show above="lg" >
         <GridItem area={'aside'} paddingX='5px'>

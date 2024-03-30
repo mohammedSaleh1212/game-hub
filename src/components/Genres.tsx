@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react'
 
-import useGenres, { Genre } from '../hooks/useGenres'
-import { Button, HStack, Image, List, ListItem,Spinner,Text } from '@chakra-ui/react'
+import  { Genre } from '../hooks/useGenres'
+import { Button, HStack, Image, List, ListItem } from '@chakra-ui/react'
 import GenresSkeleton from './GenresSkeleton'
 import useStaticGenres from '../hooks/useStaticGenres'
 
